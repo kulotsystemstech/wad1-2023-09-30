@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Counter</title>
+    <link rel="stylesheet" href="dist/bootstrap-5.2.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+    <div class="container mt-3">
+
+        <!-- Vue.js App -->
+        <div id="app">
+            <div class="wrapper" v-cloak>
+                <div class="info">
+                    <!-- Enumerate counts array elements -->
+                    <div>
+                        <h6>COUNTS</h6>
+                        <div>
+                            <span v-for="c in counts" class="mx-2">{{ c }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Display computed total counts  -->
+                    <div>
+                        <h6>TOTAL</h6>
+                        <h5>{{ totalCounts }}</h5>
+                    </div>
+                </div>
+
+                <!-- Display current count -->
+                <h1 :class="{ 'text-success': running, 'text-danger': !running }">
+                    {{ count }}
+                </h1>
+
+                <!-- Control buttons-->
+                <div class="controls">
+                    <!-- Start button: display when counter is not running -->
+                    <button v-if="!running"  @click="startCounter" class="btn btn-outline-success btn-lg">
+                        START
+                    </button>
+
+                    <!-- Stop button: display when counter is running -->
+                    <button v-if="running"  @click="stopCounter"  class="btn btn-outline-danger btn-lg">
+                        STOP
+                    </button>
+
+                    <!-- Reset button: display when counter is not running -->
+                    <button v-if="!running"  @click="resetCount" class="btn btn-outline-warning">
+                        RESET
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="dist/vue-3.3.4/vue.global.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
